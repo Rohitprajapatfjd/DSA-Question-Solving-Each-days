@@ -9,11 +9,33 @@
 // topic: string
 
 
-let a = "abc";
+let a = "adc";
 let b = "ahbgdc";
 
 const fn = (a,b)=>{
-    return b.length;
+    // check which one is small firstly
+    let small;
+    let large;
+  if(a.length < b.length){
+    small = a.split("");
+    large = b;
+  }else{
+    small = b.split("")
+    large = a
+  }
+    let slices = large;
+    let arr = [];
+ for(let i = 0; i <small.length; i++){
+    if(slices.indexOf(small[i]) != -1){
+        arr.push(small[i])
+        slices = slices.slice(slices.indexOf(small[i]))
+    }   
+ }
+   if(arr.join("") == small.join("")){
+    return true;
+   }else{
+    return false;
+   }
 }
 
 console.log(fn(a,b))
